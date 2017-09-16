@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>Insulin Delivery System</title>
+<!--All JavaScript Included-->
+<script type="text/javascript">
+function calc()
+{
+	var num1 = parseInt(document.getElementById("target").value);
+	var num2 = parseInt(document.getElementById("current").value);
+	var num6 = parseInt(document.getElementById("isfUnit").value);
+	var num7 = parseInt(document.getElementById("isfValue").value);
+	
+	var num3 = num2 - num1 ;
+	var num4 = num3 / num7 ;
+	var num5 = num4 * num6 ;
+	
+	var num8 = parseInt(document.getElementById("carb").value);
+	var num9 = parseInt(document.getElementById("icrUnit").value);
+	var num10 = parseInt(document.getElementById("icrValue").value);
+	
+	var num11 = num8 / num10 ;
+	var num12 = num11 * num9 ;
+	var num13 = 500
+	
+
+if (num2 < num1) {
+    alert("Your Blood sugar is Low! Please correct your sugar accordingly.");
+	} else if (num2 > num13){
+    alert("Your Blood sugar is Dangerously High! Drink fluids and contact a Doctor.");
+	document.getElementById("output").innerHTML = num12 + num5;
+	} else {
+	document.getElementById("output").innerHTML = num12 + num5;
+	}};
+</script>
+<!--All CSS Included-->
+<style type="text/css">
+body {
+	font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+	background-color:#6A6A6A;
+}
+#container{
+	width:800px;
+	margin:0 auto;
+	}
+.output {
+	border:solid thin #6A6A6A;
+	background-color:#FFF;
+	margin-right:5px;
+	height:20px;
+	padding:2px;
+	font-size:16px;
+	width:50px;
+}
+.output2 {
+	border:solid thin #6A6A6A;
+	background-color:#FFF;
+	height:20px;
+	padding:2px;
+	font-size:16px;
+	width:175px;
+}
+.output3 {
+	border:solid thin #6A6A6A;
+	background-color:#FFF;
+	height:20px;
+	padding:2px;
+	font-size:16px;
+	width:50px;
+}
+#form-container {
+	width:400px;
+	border:solid thin #39F;
+	background-color:#CCC;
+	padding:20px;
+
+}
+
+	
+
+
+
+
+</style>
+
+</head>
+
+<body>
+<div id="container">
+<h2> Insulin Delivery System </h2>
+
+<div id="form-container">
+<form>
+
+  <table border="0" align="center" cellpadding="5" cellspacing="0">
+    <tr>
+      <td><strong>Target Blood Sugar: </strong>
+      <label for="target"></label></td>
+      <td><input name="target" type="text" id="target" onfocus="if(this.value == '140') { this.value = ''; }" onblur="if (this.value == '') { this.value = '140'; }"
+ value="140" size="20" class="output2" /></td>
+    </tr>
+    <tr>
+      <td><strong>Current Blood Sugar:</strong></td>
+      <td><input name="current" type="text" id="current" onfocus="if(this.value == '0') { this.value = ''; }" onblur="if (this.value == '') { this.value = '0'; }"
+ value="0" size="20" class="output2" /></td>
+    </tr>
+    <tr>
+      <td><strong>Total Carbohydrates:</strong></td>
+      <td><input name="carb" type="text" id="carb" onfocus="if(this.value == '0') { this.value = ''; }" onblur="if (this.value == '') { this.value = '0'; }"
+ value="0" size="20" class="output2" /></td>
+    </tr>
+    <tr>
+      <td><strong>Insulin Carb Ratio:</strong></td>
+      <td><input name="icrUnit" type="text" id="icrUnit" onfocus="if(this.value == '1') { this.value = ''; }" onblur="if (this.value == '') { this.value = '1'; }"
+ value="1" size="5" maxlength="5" class="output3" /> 
+      : 
+        <input name="icrValue" type="text" id="icrValue" onfocus="if(this.value == '10') { this.value = ''; }" onblur="if (this.value == '') { this.value = '10'; }"
+ value="10" size="5" maxlength="5" class="output3" />
+        gm </td>
+    </tr>
+    <tr>
+      <td><strong>Insulin Sensitivity Factor:</strong></td>
+      <td><input name="isfUnit" type="text" id="isfUnit" onfocus="if(this.value == '1') { this.value = ''; }" onblur="if (this.value == '') { this.value = '1'; }"
+ value="1" size="5" maxlength="5" class="output3" />
+        :
+        <input name="isfValue" type="text" id="isfValue" onfocus="if(this.value == '40') { this.value = ''; }" onblur="if (this.value == '') { this.value = '40'; }"
+ value="40" size="5" maxlength="5" class="output3" />
+        mg/dl</td>
+    </tr>
+    <tr>
+      <td><input type="reset" name="clearApp" id="clearApp" value="Clear App" onClick="window.location.reload();" /> 
+              <input type="button" value="Calculate" onclick="calc();" /></td>
+      <td>
+        <table  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td align="left" valign="middle" ><div id="output" class="output"></div></td>
+            <td align="left" valign="middle"> units</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table></form>
+</div>
+
+<h2>Disclaimer</h2>
+<p><strong>The 
+  
+  
+  
+  numbers above are default values and are for testing purposes. If you intend to use this application then make sure your get the following numbers from your Diabetes Educator:</strong>
+<ul>
+  <li><strong>Target Blood Sugar</strong></li>
+  <li><strong>Insulin Carb Ratio</strong></li>
+  <li><strong>Insulin Sensitivity Factor</strong></li>
+</ul>
+<p>&nbsp;</p>
+
+</div>
+</body>
+</html>
